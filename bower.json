@@ -1,0 +1,34 @@
+{
+  "name": "VEGA",
+  "authors": [
+    "Abhi & Nagendra"
+  ],
+  "description": "Shipping Module",
+  "main": "index.html",
+  "keywords": [
+    "shipping",
+    "vega",
+    "delivery",
+    "courier"
+  ],
+  "license": "Essilor",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#1.3.20",
+    "angular-ui-router": "^0.3.1",
+    "angular-resource": "^1.5.8",
+    "jquery": "2.2.4",
+    "jquery-ui": "1.11.4"
+  },
+  "resolutions": {
+    "angular": "1.3.20"
+  }
+}
