@@ -1,0 +1,29 @@
+<h1>Labs</h1>
+
+<table>
+    <tr ng-repeat="lab in vm.labs">
+        <td>
+            {{ lab.code }}</td>
+        <td>
+            {{ lab.description }}</td>
+        <td>
+            {{ lab.type }}</td>
+    </tr>
+</table>
+<style type="text/css">
+table,
+th,
+td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+</style>

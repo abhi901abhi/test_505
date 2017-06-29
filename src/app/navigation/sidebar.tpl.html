@@ -1,0 +1,37 @@
+<!-- ***************************************************************** -->
+<!-- SIDEBAR START-->
+<!--
+        Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+        Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+    -->
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text">
+                <img src="https://s3.amazonaws.com/designmantic-logos/logos/2016/Sep/small-7454-57cb650d6c09a.png">
+            </a>
+        </div>
+        <ul class="nav" ng-init="isActive='home'">
+            <li ng-click="isActive='home'" ng-class="isActive=='home'?'active':''">
+                <a ui-sref="user.home">
+                    <i class="ti-panel"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li ng-click="isActive='labs'" ng-class="isActive=='labs'?'active':''">
+                <a ui-sref="user.labs">
+                    <i class="ti-user"></i>
+                    <p>Labs</p>
+                </a>
+            </li>
+            <li ng-click="isActive='flags'" ng-class="isActive=='flags'?'active':''">
+                <a ui-sref="user.flags">
+                    <i class="ti-view-list-alt"></i>
+                    <p>Flags</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- SIDEBAR END-->
+<!-- ***************************************************************** -->
