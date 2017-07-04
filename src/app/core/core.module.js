@@ -12,6 +12,7 @@
         'vega.home',
         'vega.labs',
         'vega.flags',
+        'vega.datacenter',
 
         // // the common modules and navigation areas
         // 'hercules.settings',
@@ -36,7 +37,8 @@
         'templates-app', //, 'templates-common',
 
         // // the third-party modules we are using
-        'ui.router'
+        'ui.router',
+        'ui.bootstrap'
         // 'ui.bootstrap', 'ui.tree', 'textAngular', 'duScroll', 'highcharts-ng', 'ngLodash',
         // 'wj', 'cfp.hotkeys', 'isteven-multi-select', 'angularjs-dropdown-multiselect', //'m43nu.auto-height'
         // 'ui.select', 'checklist-model', 'ngStorage', 'ngAA', 'ngDialog',
