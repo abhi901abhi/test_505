@@ -25,10 +25,24 @@
                             <a href="#home">Home</a>
                         </li>
                         <!--***************** Technologies ***************** -->
-                        <li><a href="#">Technologies</a>
+                         <li><a href="#">Technologies</a>
                             <ul class="dropdown">
-                                <li><a href="#">Infrastructure Core Components</a>
-                                    <ul class="dropdown">
+                        <li ng-repeat="list in vm.techmegamenu" ng-include="'submenu.html'">
+
+                                  <!--   <ul class="dropdown">
+                        <li ng-repeat="sublist in list.parent"><a href="blog-classic-no-sidebar.html">{{sublist.submenu}}</a>
+                             <ul class="dropdown">
+                        <li ng-repeat="subchildlist in sublist.parent"><a href="blog-classic-no-sidebar.html">{{sublist.submenu}}</a>
+
+                        </li>
+                        </ul>
+                        </li>
+                        </ul> -->
+
+                        </li>
+                       
+                               <!-- <li><a href="#">Infrastructure Core Components</a>
+                                <ul class="dropdown">
                                         <li><a href="blog-classic-no-sidebar.html">Active Directory (AD DS)</a></li>
                                         <li><a href="blog-classic-left-sidebar.html">Domain Name System (DNS)</a></li>
                                         <li><a href="blog-classic-right-sidebar.html">Dynamic Host Configuration Protocol (DHCP)</a></li>
@@ -40,7 +54,18 @@
                                 </li>
                                 <li><a href="#">Datacenter</a>
                                     <ul class="dropdown">
-                                        <li><a ui-sref="user.datacenter">Corses Offered</a></li>
+                                        <li><a ui-sref="user.datacenter">Corses Offered</a>
+                                <ul class="dropdown">
+                                        <li><a href="blog-classic-no-sidebar.html">Active Directory (AD DS)</a></li>
+                                        <li><a href="blog-classic-left-sidebar.html">Domain Name System (DNS)</a></li>
+                                        <li><a href="blog-classic-right-sidebar.html">Dynamic Host Configuration Protocol (DHCP)</a></li>
+                                        <li><a href="blog-classic-both-sidebar.html">Print Server (PS)</a></li>
+                                        <li><a href="blog-classic-left-thumbs.html">File Server (FS)</a></li>
+                                        <li><a href="blog-classic-left-thumbs.html">Distributed File System (DFS)</a></li>
+                                        <li><a href="blog-classic-left-thumbs.html">Web Services (WS)</a></li>
+                                    </ul>
+
+                                        </li>
                                         <li><a href="blog-grid-3-column.html">Blog Grid 3 Column</a></li>
                                         <li><a href="blog-grid-4-column.html">Blog Grid 4 Column</a></li>
                                     </ul>
@@ -100,7 +125,7 @@
                                         <li><a href="blog-grid-3-column.html">Blog Grid 3 Column</a></li>
                                         <li><a href="blog-grid-4-column.html">Blog Grid 4 Column</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <!--***************** Future Events ***************** -->
@@ -249,3 +274,11 @@
         </div>
     </div>
 </header>
+ <script  type="text/ng-template" id="submenu.html">
+                         <a href="blog-classic-no-sidebar.html">{{list.menudata}}</a>
+<ul class="dropdown" ng-if="list.parent">
+                        <li ng-repeat="list in list.parent" ng-include="'submenu.html'">
+
+                        </li>
+                        </ul>
+                        </script>
