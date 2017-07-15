@@ -18,7 +18,9 @@
                  templateUrl: 'navigation/sidebar.tpl.html'
              },
              "header": {
-                 templateUrl: 'navigation/header.tpl.html'
+                 templateUrl: 'navigation/header.tpl.html',
+                 controller: 'headerctrl',
+            controllerAs: 'vm'
              },
              "content": {
                  template: '<div ui-view></div>'
