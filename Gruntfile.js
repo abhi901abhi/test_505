@@ -10,8 +10,7 @@ module.exports = function(grunt) {
     // CONFIGURE GRUNT ===========================================================
     // ===========================================================================
     grunt.initConfig({
-
-        // get the configuration info from package.json ----------------------------
+ // get the configuration info from package.json ----------------------------
         // this way we can use things like name and version (pkg.name)
         pkg: grunt.file.readJSON('package.json'),
 
