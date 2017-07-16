@@ -274,6 +274,8 @@ form {
     text-align: right;
   }
 }
+
+
 /*Drop Caps*/
 .drop-caps p {
   text-align: justify;
@@ -3813,6 +3815,7 @@ fieldset[disabled] .btn-gray.focus {
 .btn-flat {
   border-radius: 0;
 }
+
 /* -------- Btn-Default ---------- */
 .btn {
   font-size: 13px;

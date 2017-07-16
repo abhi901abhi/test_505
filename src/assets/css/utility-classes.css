@@ -8,10 +8,22 @@
 */
 /* -------- Text Colors ---------- */
 /* Text Black & Gray Color*/
+.fix-to-top{
+  position: fixed;
+   top: 0;
+}
+
+.fixedtotopnav{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 999;
+  width: 100%;
+}
 .text-black {
   color: #000 !important;
 }
-.text-black-111 {
+.text-black-111 {   
   color: #111111 !important;
 }
 .text-black-222 {

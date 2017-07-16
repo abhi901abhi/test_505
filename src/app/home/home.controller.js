@@ -4,6 +4,7 @@
         .controller('homeController', ['$scope', '$http', function($scope, $http) {
             var vm = this;
             vm.title = 'homeController';
+           
         }]);
 
 })();

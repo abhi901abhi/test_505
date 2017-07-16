@@ -1960,7 +1960,7 @@ var THEMEMASCOT = {};
     var headerInit = 0;
     THEMEMASCOT.documentOnReady = {
         init: function() {
-            debugger;
+            // debugger;
             THEMEMASCOT.initialize.init();
             if (headerInit === 0) {
                 THEMEMASCOT.header.init();
@@ -2023,7 +2023,7 @@ var THEMEMASCOT = {};
 })(jQuery);
 
 $(document).ready(function(e) {
-    debugger;
+    // debugger;
     $(".rev_slider").revolution({
         sliderType: "standard",
         sliderLayout: "auto",
