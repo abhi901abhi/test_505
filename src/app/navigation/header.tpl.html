@@ -27,7 +27,7 @@
                         <!--***************** Technologies ***************** -->
                          <li><a href="#">Technologies</a>
                             <ul class="dropdown">
-                        <li ng-repeat="list in vm.techmegamenu" ng-include="'submenu.html'">
+                        <li ng-repeat="list in vm.techmegamenu" ng-include="'submenu.html'" >
 
                                   <!--   <ul class="dropdown">
                         <li ng-repeat="sublist in list.parent"><a href="blog-classic-no-sidebar.html">{{sublist.submenu}}</a>
@@ -275,7 +275,7 @@
     </div>
 </header>
  <script  type="text/ng-template" id="submenu.html">
-                         <a href="blog-classic-no-sidebar.html">{{list.menudata}}</a>
+                         <a  ng-click="!list.parent&&vm.goToCoursePage(list.menudata)">{{list.menudata}}</a>
 <ul class="dropdown" ng-if="list.parent">
                         <li ng-repeat="list in list.parent" ng-include="'submenu.html'">
 

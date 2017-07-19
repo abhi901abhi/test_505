@@ -1,8 +1,13 @@
 (function() {
     angular.module('vega').controller("headerctrl", headerctrl);
 
-    function headerctrl() {
+    function headerctrl($state) {
         var vm = this;
+
+          vm.goToCoursePage=function(pageheading){
+            alert(pageheading);
+            $state.go("user.datacenter");
+        };
         vm.techmegamenu = [{
             "parent": [{
                 "menudata": "Hardware",
@@ -359,5 +364,7 @@
             "menudata": "ITIL"
         }];
 
+
     }
+
 })();
