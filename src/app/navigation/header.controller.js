@@ -4,7 +4,8 @@
     function headerctrl($state) {
         var vm = this;
 
-          vm.goToCoursePage=function(pageheading){
+        vm.goToCoursePage = function(pageheading) {
+            debugger;
             alert(pageheading);
             $state.go("user.datacenter");
         };
@@ -345,16 +346,16 @@
                 }, {
                     "menudata": "Wireless"
                 }]
-            },{
-            	"menudata":"Juniper",
-            	"parent":[{
-            		"menudata": "Routing & Switching"
-            	}]
-            },{
-            	"menudata":"HPE",
-            	"parent":[{
-            		"menudata": "Switching"
-            	}]
+            }, {
+                "menudata": "Juniper",
+                "parent": [{
+                    "menudata": "Routing & Switching"
+                }]
+            }, {
+                "menudata": "HPE",
+                "parent": [{
+                    "menudata": "Switching"
+                }]
             }]
         }, {
 

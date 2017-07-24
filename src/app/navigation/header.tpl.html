@@ -25,11 +25,10 @@
                             <a href="#home">Home</a>
                         </li>
                         <!--***************** Technologies ***************** -->
-                         <li><a href="#">Technologies</a>
+                        <li><a href="#">Technologies</a>
                             <ul class="dropdown">
-                        <li ng-repeat="list in vm.techmegamenu" ng-include="'submenu.html'" >
-
-                                  <!--   <ul class="dropdown">
+                                <li ng-repeat="list in vm.techmegamenu" ng-include="'submenu.html'">
+                                    <!--   <ul class="dropdown">
                         <li ng-repeat="sublist in list.parent"><a href="blog-classic-no-sidebar.html">{{sublist.submenu}}</a>
                              <ul class="dropdown">
                         <li ng-repeat="subchildlist in sublist.parent"><a href="blog-classic-no-sidebar.html">{{sublist.submenu}}</a>
@@ -38,10 +37,8 @@
                         </ul>
                         </li>
                         </ul> -->
-
-                        </li>
-                       
-                               <!-- <li><a href="#">Infrastructure Core Components</a>
+                                </li>
+                                <!-- <li><a href="#">Infrastructure Core Components</a>
                                 <ul class="dropdown">
                                         <li><a href="blog-classic-no-sidebar.html">Active Directory (AD DS)</a></li>
                                         <li><a href="blog-classic-left-sidebar.html">Domain Name System (DNS)</a></li>
@@ -274,11 +271,10 @@
         </div>
     </div>
 </header>
- <script  type="text/ng-template" id="submenu.html">
-                         <a  ng-click="!list.parent&&vm.goToCoursePage(list.menudata)">{{list.menudata}}</a>
-<ul class="dropdown" ng-if="list.parent">
-                        <li ng-repeat="list in list.parent" ng-include="'submenu.html'">
-
-                        </li>
-                        </ul>
-                        </script>
+<script type="text/ng-template" id="submenu.html">
+    <a ng-click="vm.goToCoursePage(list.menudata)">{{list.menudata}}</a>
+    <ul class="dropdown" ng-if="list.parent">
+        <li ng-repeat="list in list.parent" ng-include="'submenu.html'">
+        </li>
+    </ul>
+</script>

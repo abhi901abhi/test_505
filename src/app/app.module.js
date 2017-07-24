@@ -20,7 +20,7 @@
              "header": {
                  templateUrl: 'navigation/header.tpl.html',
                  controller: 'headerctrl',
-            controllerAs: 'vm'
+                 controllerAs: 'vm'
              },
              "content": {
                  template: '<div ui-view></div>'
