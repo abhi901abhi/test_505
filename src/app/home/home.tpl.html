@@ -185,6 +185,90 @@
                         </div>
                     </div>
                     
+                        <div class="col-md-4" set-class-when-at-top="fix-to-top">
+                        <div class="p-30 mt-0 bg-theme-colored" >
+                            <h3 class="title-pattern mt-0"><span class="text-white">Request <span class="text-theme-color-2">Information</span></span></h3>
+                            <!-- Appilication Form Start-->
+                            <form id="reservation_form" name="reservation_form" class="reservation-form mt-20" method="post" action="http://kodesolution.com/demo/personal/s/studypress/v4.1/demo/includes/reservation.php">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group mb-20">
+                                            <input placeholder="Enter Name" type="text" id="reservation_name" name="reservation_name" required="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20">
+                                            <input placeholder="Email" type="text" id="reservation_email" name="reservation_email" class="form-control" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20">
+                                            <input placeholder="Phone" type="text" id="reservation_phone" name="reservation_phone" class="form-control" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20">
+                                            <div class="styled-select">
+                                                <select id="person_select" name="person_select" class="form-control" required="">
+                                                            <option value="">Choose Subject</option>
+                                                            <option value="1 Person">Software Engineering</option>
+                                                            <option value="2 Person">Computer Science engineering</option>
+                                                            <option value="3 Person">Accounting Technologies</option>
+                                                            <option value="Family Pack">BACHELOR`S DEGREE</option>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20">
+                                            <input name="Date Of Birth" class="form-control required date-picker" type="text" placeholder="Date Of Birth" aria-required="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <textarea placeholder="Enter Message" rows="3" class="form-control required" name="form_message" id="form_message" aria-required="true"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group mb-0 mt-10">
+                                            <input name="form_botcheck" class="form-control" type="hidden" value="">
+                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Please wait...">Submit Request</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Application Form End-->
+                            <!-- Application Form Validation Start-->
+                            <script type="text/javascript">
+                                $("#reservation_form").validate({
+                                    submitHandler: function(form) {
+                                        var form_btn = $(form).find('button[type="submit"]');
+                                        var form_result_div = '#form-result';
+                                        $(form_result_div).remove();
+                                        form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                                        var form_btn_old_msg = form_btn.html();
+                                        form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                                        $(form).ajaxSubmit({
+                                            dataType: 'json',
+                                            success: function(data) {
+                                                if (data.status == 'true') {
+                                                    $(form).find('.form-control').val('');
+                                                }
+                                                form_btn.prop('disabled', false).html(form_btn_old_msg);
+                                                $(form_result_div).html(data.message).fadeIn('slow');
+                                                setTimeout(function() {
+                                                    $(form_result_div).fadeOut('slow')
+                                                }, 6000);
+                                            }
+                                        });
+                                    }
+                                });
+                            </script>
+                            <!-- Application Form Validation Start -->
+                        </div>
+                    
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -283,88 +367,7 @@
             </div>
         </div>
     </section>
-    <div class="col-md-4" set-class-when-at-top="fix-to-top">
-                        <div class="p-30 mt-0 bg-theme-colored" >
-                            <h3 class="title-pattern mt-0"><span class="text-white">Request <span class="text-theme-color-2">Information</span></span></h3>
-                            <!-- Appilication Form Start-->
-                            <form id="reservation_form" name="reservation_form" class="reservation-form mt-20" method="post" action="http://kodesolution.com/demo/personal/s/studypress/v4.1/demo/includes/reservation.php">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group mb-20">
-                                            <input placeholder="Enter Name" type="text" id="reservation_name" name="reservation_name" required="" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-20">
-                                            <input placeholder="Email" type="text" id="reservation_email" name="reservation_email" class="form-control" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-20">
-                                            <input placeholder="Phone" type="text" id="reservation_phone" name="reservation_phone" class="form-control" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-20">
-                                            <div class="styled-select">
-                                                <select id="person_select" name="person_select" class="form-control" required="">
-                                                            <option value="">Choose Subject</option>
-                                                            <option value="1 Person">Software Engineering</option>
-                                                            <option value="2 Person">Computer Science engineering</option>
-                                                            <option value="3 Person">Accounting Technologies</option>
-                                                            <option value="Family Pack">BACHELOR`S DEGREE</option>
-                                                        </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group mb-20">
-                                            <input name="Date Of Birth" class="form-control required date-picker" type="text" placeholder="Date Of Birth" aria-required="true">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <textarea placeholder="Enter Message" rows="3" class="form-control required" name="form_message" id="form_message" aria-required="true"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group mb-0 mt-10">
-                                            <input name="form_botcheck" class="form-control" type="hidden" value="">
-                                            <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Please wait...">Submit Request</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- Application Form End-->
-                            <!-- Application Form Validation Start-->
-                            <script type="text/javascript">
-                                $("#reservation_form").validate({
-                                    submitHandler: function(form) {
-                                        var form_btn = $(form).find('button[type="submit"]');
-                                        var form_result_div = '#form-result';
-                                        $(form_result_div).remove();
-                                        form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                                        var form_btn_old_msg = form_btn.html();
-                                        form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                                        $(form).ajaxSubmit({
-                                            dataType: 'json',
-                                            success: function(data) {
-                                                if (data.status == 'true') {
-                                                    $(form).find('.form-control').val('');
-                                                }
-                                                form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                                $(form_result_div).html(data.message).fadeIn('slow');
-                                                setTimeout(function() {
-                                                    $(form_result_div).fadeOut('slow')
-                                                }, 6000);
-                                            }
-                                        });
-                                    }
-                                });
-                            </script>
-                            <!-- Application Form Validation Start -->
-                        </div>
-                    </div>
+    
     <!-- Section: Why Choose Us -->
     <section id="event">
         <div class="container">
@@ -402,6 +405,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4"></div>
                 </div>
             </div>
         </div>
@@ -459,60 +463,40 @@
                 <div class="col-lg-8">
                     <div class="col-sm-6 col-md-3 mb-sm-30 sm-text-center">
                         <div class="team maxwidth400">
-                            <div class="thumb"><img class="img-fullwidth" src="/src/assets/images/team/team5.jpg" alt=""></div>
                             <div class="content border-1px p-15 bg-light clearfix">
                                 <h4 class="name text-theme-color-2 mt-0">David Jakaria - <small>Teacher</small></h4>
                                 <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing elit.</p>
-                                <ul class="styled-icons icon-dark icon-circled icon-theme-colored icon-sm pull-left flip">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
+                               
                                 <a class="btn btn-theme-colored btn-sm pull-right flip" href="page-teachers-details.html">view details</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 mb-sm-30 sm-text-center">
                         <div class="team maxwidth400">
-                            <div class="thumb"><img class="img-fullwidth" src="/src/assets/images/team/team6.jpg" alt=""></div>
                             <div class="content border-1px p-15 bg-light clearfix">
                                 <h4 class="name mt-0 text-theme-color-2">Sakib Smith - <small>Teacher</small></h4>
                                 <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing elit.</p>
-                                <ul class="styled-icons icon-dark icon-circled icon-theme-colored icon-sm pull-left flip">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
+                               
                                 <a class="btn btn-theme-colored btn-sm pull-right flip" href="page-teachers-details.html">view details</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 mb-sm-30 sm-text-center">
                         <div class="team maxwidth400">
-                            <div class="thumb"><img class="img-fullwidth" src="/src/assets/images/team/team7.jpg" alt=""></div>
                             <div class="content border-1px p-15 bg-light clearfix">
                                 <h4 class="name mt-0 text-theme-color-2">Ismail Jon - <small>Teacher</small></h4>
                                 <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing elit.</p>
-                                <ul class="styled-icons icon-dark icon-circled icon-theme-colored icon-sm pull-left flip">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
+                               
                                 <a class="btn btn-theme-colored btn-sm pull-right flip" href="page-teachers-details.html">view details</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 sm-text-center">
                         <div class="team maxwidth400">
-                            <div class="thumb"><img class="img-fullwidth" src="/src/assets/images/team/team8.jpg" alt=""></div>
                             <div class="content border-1px p-15 bg-light clearfix">
                                 <h4 class="name mt-0 text-theme-color-2">Andre Smith - <small>Teacher</small></h4>
                                 <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing elit.</p>
-                                <ul class="styled-icons icon-dark icon-circled icon-theme-colored icon-sm pull-left flip">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
+                               
                                 <a class="btn btn-theme-colored btn-sm pull-right flip" href="page-teachers-details.html">view details</a>
                             </div>
                         </div>
@@ -522,405 +506,7 @@
             </div>
         </div>
     </section>
-    <!-- Section: Gallery-->
-    <section class="bg-lighter">
-        <div class="container pt-60">
-            <div class="section-title mb-0">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h2 class="mt-0 text-uppercase font-28 line-bottom">Our <span class="text-theme-color-2 font-weight-400">Gallery</span></h2>
-                        <h4 class="pb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Portfolio Gallery Grid -->
-                        <div id="grid" class="gallery-isotope grid-4 gutter clearfix">
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select1">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s1.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/1.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/1.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select1">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s2.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/2.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/2.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select2">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s3.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/3.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/3.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select3">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s4.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/4.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/4.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select1">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s5.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/5.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/5.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select3">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s6.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/6.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/6.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select2">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s7.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/7.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/7.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select3">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s8.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/8.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/8.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select1">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s9.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/9.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/9.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select2">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s10.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/10.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/10.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select1">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s11.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/11.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/11.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item select3">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="/src/assets/images/gallery/s12.jpg" alt="project">
-                                    <div class="overlay-shade"></div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a data-lightbox="image" href="/src/assets/images/gallery/12.jpg"><i class="fa fa-plus"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="hover-link" data-lightbox="image" href="/src/assets/images/gallery/12.jpg">View more</a>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-                        </div>
-                        <!-- End Portfolio Gallery Grid -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section: Client Say -->
-    <section class="divider parallax layer-overlay overlay-theme-colored-9" data-background-ratio="0.5" data-bg-img="/src/assets/images/bg/bg2.jpg">
-        <div class="container pt-60 pb-60">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-2">
-                    <h2 class="line-bottom-center text-gray-lightgray text-center mt-0 mb-30">Our Happy Students say</h2>
-                    <div class="owl-carousel-1col" data-dots="true">
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center">
-                                <div class="thumb"><img class="img-circle" alt="" src="/src/assets/images/testimonials/3.jpg"></div>
-                                <div class="content pt-10">
-                                    <p class="font-15 text-white"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio illo ex accusantium eaque itaque officiis et sit. Vero quo, impedit neque.</em></p>
-                                    <i class="fa fa-quote-right font-36 mt-10 text-gray-lightgray"></i>
-                                    <h4 class="author text-theme-color-2 mb-0">Catherine Grace</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Designer</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center">
-                                <div class="thumb"><img class="img-circle" alt="" src="/src/assets/images/testimonials/3.jpg"></div>
-                                <div class="content pt-10">
-                                    <p class="font-15 text-white"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio illo ex accusantium eaque itaque officiis et sit. Vero quo, impedit neque.</em></p>
-                                    <i class="fa fa-quote-right font-36 mt-10 text-gray-lightgray"></i>
-                                    <h4 class="author text-theme-color-2 mb-0">Catherine Grace</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Designer</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center">
-                                <div class="thumb"><img class="img-circle" alt="" src="/src/assets/images/testimonials/3.jpg"></div>
-                                <div class="content pt-10">
-                                    <p class="font-15 text-white"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio illo ex accusantium eaque itaque officiis et sit. Vero quo, impedit neque.</em></p>
-                                    <i class="fa fa-quote-right font-36 mt-10 text-gray-lightgray"></i>
-                                    <h4 class="author text-theme-color-2 mb-0">Catherine Grace</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Designer</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section: blog -->
-    <section id="blog" class="">
-        <div class="container pt-60 pb-60">
-            <div class="section-title mb-0">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h2 class="mt-0 text-uppercase font-28 line-bottom">Latest <span class="text-theme-color-2 font-weight-400">News</span></h2>
-                        <h4 class="pb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="owl-carousel-3col" data-dots="true">
-                        <div class="item">
-                            <article class="post clearfix maxwidth600 mb-sm-30">
-                                <div class="entry-header">
-                                    <div class="post-thumb thumb"> <img src="/src/assets/images/blog/1.jpg" alt="" class="img-responsive img-fullwidth"> </div>
-                                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                                        <div class="display-table">
-                                            <div class="display-table-cell">
-                                                <ul>
-                                                    <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                                                    <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="entry-content border-1px p-20">
-                                    <h5 class="entry-title mt-0 pt-0"><a href="#">The World Best University</a></h5>
-                                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                                        <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                                        <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="item">
-                            <article class="post clearfix maxwidth600 mb-sm-30">
-                                <div class="entry-header">
-                                    <div class="post-thumb thumb"> <img src="/src/assets/images/blog/8.jpg" alt="" class="img-responsive img-fullwidth"> </div>
-                                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                                        <div class="display-table">
-                                            <div class="display-table-cell">
-                                                <ul>
-                                                    <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                                                    <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="entry-content border-1px p-20">
-                                    <h5 class="entry-title mt-0 pt-0"><a href="#">The World Best University</a></h5>
-                                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                                        <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                                        <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="item">
-                            <article class="post clearfix maxwidth600 mb-sm-30">
-                                <div class="entry-header">
-                                    <div class="post-thumb thumb"> <img src="/src/assets/images/blog/7.jpg" alt="" class="img-responsive img-fullwidth"> </div>
-                                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                                        <div class="display-table">
-                                            <div class="display-table-cell">
-                                                <ul>
-                                                    <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                                                    <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="entry-content border-1px p-20">
-                                    <h5 class="entry-title mt-0 pt-0"><a href="#">The World Best University</a></h5>
-                                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                                        <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                                        <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="item">
-                            <article class="post clearfix maxwidth600 mb-sm-30">
-                                <div class="entry-header">
-                                    <div class="post-thumb thumb"> <img src="/src/assets/images/blog/4.jpg" alt="" class="img-responsive img-fullwidth"> </div>
-                                    <div class="entry-meta meta-absolute text-center pl-15 pr-15">
-                                        <div class="display-table">
-                                            <div class="display-table-cell">
-                                                <ul>
-                                                    <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up"></i> 265 <br> Likes</a></li>
-                                                    <li class="mt-20"><a class="text-white" href="#"><i class="fa fa-comments-o"></i> 72 <br> comments</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="entry-content border-1px p-20">
-                                    <h5 class="entry-title mt-0 pt-0"><a href="#">The World Best University</a></h5>
-                                    <p class="text-left mb-20 mt-15 font-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read more</a>
-                                    <ul class="list-inline entry-date pull-right font-12 mt-5">
-                                        <li><a class="text-theme-colored" href="#">Admin |</a></li>
-                                        <li><span class="text-theme-colored">Nov 13, 2015</span></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
     <!-- Divider: Call To Action -->
     <section class="bg-theme-color-2">
         <div class="container pt-10 pb-20">
